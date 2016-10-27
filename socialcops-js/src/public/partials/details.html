@@ -1,0 +1,75 @@
+<div layout="row" ng-show="isProcessing ()">
+	<div flex layout="column">
+		<md-progress-linear md-mode="indeterminate"></md-progress-linear>
+	</div>
+</div>
+<div layout="row" ng-hide="isProcessing ()">
+	<div flex="20"></div>
+	<div flex="60" layout="column">
+		<md-list ng-cloak>
+	  		<md-subheader class="md-no-sticky">Details</md-subheader>
+	  			<md-list-item ng-repeat="(name, obj) in data.details">
+	  				<md-toolbar style="border-bottom:1px solid white" class="md-hue-3">
+	  					<div class="md-toolbar-tools">
+			    			<span class="md-title">{{name}}</span>
+			    			<span flex="20"></span>
+			    			<span class="md-title" ng-hide="obj.edit">{{obj.value}}</span>
+			    			<span ng-show="obj.edit">
+			    				<md-input-container>
+			    					<br />
+						        	<input ng-model="obj.newValue">
+						      	</md-input-container>
+			    			</span>
+			    			<span flex></span>
+			    			<md-button class="md-icon-button" ng-hide="obj.edit" ng-click="toggleEdit (name)">
+				          		<md-icon md-font-set="material-icons"> mode_edit </md-icon>
+				    		</md-button>
+			    			<md-button class="md-icon-button" ng-hide="obj.edit" ng-click="deleteDetail (name, obj.value)">
+				          		<md-icon md-font-set="material-icons"> delete </md-icon>
+				    		</md-button>
+				    		<md-button md-no-ink class="md-raised md-primary" ng-show="obj.edit" ng-click="updateDetail (name, obj.newValue)">
+				        		save
+				        	</md-button>
+				    		<md-button md-no-ink class="md-raised md-primary" ng-show="obj.edit" ng-click="toggleEdit (name)">
+				        		cancel
+				        	</md-button>
+			    		</div>
+		    		</md-toolbar>
+	  			</md-list-item>
+	  			<md-list-item ng-show="emptyDetails ()">
+	  				<md-toolbar style="background-color: #E0E0E0">
+	  					<div class="md-toolbar-tools">
+  							<span style="color:#9E9E9E">No Details Found.</span>
+  							<span flex></span>
+						</div>
+					</md-toolbar>
+	  			</md-list-item>
+	  			<br><br />
+	  			<md-list-item>
+  					<br />
+	  				<md-toolbar style="background-color: #FFFFFF; border:1px solid #7986CB">
+	  					<div class="md-toolbar-tools">
+		  					<span style="color:#7986CB"> Add New Detail </span>
+		  					<span flex></span>
+		  					<span>
+		  						<br>
+			  					<md-input-container>
+						        	<input ng-model="data.newDetail.name" placeholder="Detail Name">
+						      	</md-input-container>
+					      	</span>
+					      	<span>
+					      		<br>
+						      	<md-input-container>
+						        	<input ng-model="data.newDetail.value" placeholder="Detail Value">
+						      	</md-input-container>
+					      	</span>
+					      	<span flex></span>
+					      	<md-button md-no-ink class="md-raised md-primary" ng-click="addDetail (data.newDetail.name, data.newDetail.value)" ng-disabled="(data.newDetail.name.trim () == '')" >
+					    		 <md-icon md-font-set="material-icons"> send </md-icon>
+					    	</md-button>
+				    	</div>
+			    	</md-toolbar>
+	  			</md-list-item>
+  		</md-list>
+	</div>
+</div>

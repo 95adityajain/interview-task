@@ -1,0 +1,62 @@
+<!DCOTYPE html>
+<html ng-app="gossipGirlApp">
+	<head>
+		<title ng-bind="pageTitle">Gossip Girl</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	  	<!-- Angular Material style sheet -->
+	  	<link rel="stylesheet" href="/static/css/angular-material.min.css">
+	  	<!-- Material Icons style sheet -->
+	  	<link href="/static/css/material-icon.css" rel="stylesheet">
+	  	<!-- App Specific Style Sheet -->
+	  	<link rel="stylesheet" href="/static/css/clientApp.css">
+		
+		<!-- Socket.IO JS -->
+		<script type="text/javascript" src="/static/js/socket.io.js"></script>
+		<!-- Angular JS -->
+		<script type="text/javascript" src="/static/js/angular.min.js"></script>
+		<!-- Angular Material JS Dependencies -->
+		<script type="text/javascript" src="/static/js/angular-animate.min.js"></script>
+	  	<script type="text/javascript" src="/static/js/angular-aria.min.js"></script>
+	  	<script type="text/javascript" src="/static/js/angular-messages.min.js"></script>
+	  	<script type="text/javascript" src="/static/js/angular-material.min.js"></script>
+	  	<!-- Angular Route Dependency -->
+	  	<script type="text/javascript" src="/static/js/angular-route.min.js"></script>
+	  	<base href="/">
+	  	<script type="text/javascript">
+	  		// Global "app" object.
+  			var app = angular.module ("gossipGirlApp",["ngMaterial","ngRoute"]);
+	  	</script>
+	  	<script type="text/javascript" src="/static/js/clientApp.js"></script>
+	</head>
+	<body>
+		<!-- App Header -->
+		<md-toolbar class="md-hue-2">
+      		<div class="md-toolbar-tools">
+        		<md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+          			<i class="material-icons">dns</i>
+        		</md-button>
+        		<!-- Header Title to changes according to route -->
+	        	<h2><span ng-bind="pageTitle">Gossip Girl</span></h2>
+	    		<span flex></span>
+	    		<!-- Navigations for LoggedIn user -->
+	    		<span ng-show="isLoggedIn ()">
+		    		<md-button md-no-ink class="md-raised md-primary" ng-click="routingService.gotoNotifications ()">
+		        		Notifications
+		        	</md-button>
+		        	<md-button md-no-ink class="md-raised md-primary" ng-click="routingService.gotoDetails ()">
+		        		Details
+		        	</md-button>	
+		        	<md-button md-no-ink class="md-raised md-primary" ng-click="routingService.gotoSubscriptions ()">
+		        		Subscriptions
+		        	</md-button> 
+		        	<md-button class="md-icon-button" aria-label="logout" ng-click="logout ()">
+		    			<md-tooltip>Logout</md-tooltip>
+		          		<i class="material-icons">settings_power</i>
+		    		</md-button>
+	        	</span>
+      		</div>
+    	</md-toolbar>
+
+    	<div ng-view></div>
+	</body>
+</html>

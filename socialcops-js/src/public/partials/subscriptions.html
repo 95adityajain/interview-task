@@ -1,0 +1,46 @@
+<div layout="row" ng-show="isProcessing ()">
+	<div flex layout="column">
+		<md-progress-linear md-mode="indeterminate"></md-progress-linear>
+	</div>
+</div>
+<div layout="row" ng-hide="isProcessing () || emptySubscriptions ()">
+	<div flex="40"></div>
+	<div flex="30">
+		<md-button md-no-ink class="md-raised md-primary" ng-click="saveSubscription ()">
+    		Save Subscriptions
+    	</md-button>
+	</div>
+</div>
+
+<div layout="row" ng-show="emptySubscriptions ()">
+	<div flex="20"></div>
+	<div flex="60">
+		<md-toolbar style="background-color: #E0E0E0">
+		<div class="md-toolbar-tools">
+			<span style="color:#9E9E9E">No User's Found.</span>
+			<span flex></span>
+		</div>
+	</md-toolbar>
+	</div>
+</div>
+<div layout="row" ng-hide="isProcessing ()">
+	<div flex="10"></div>
+	<div flex="80" layout="column">
+		<div layout="column" ng-repeat="(userId, valObj) in data.subscriptions">
+			<md-toolbar style="border-bottom:1px solid white" class="md-hue-3" flex>
+				<div class="md-toolbar-tools">
+					<span class="md-title">{{valObj.username}}</span>
+	    			<span flex></span>
+    				<md-switch ng-model="data['subscribeAllPerUser'][userId]">
+				    	Subscribe All
+				  	</md-switch>
+				</div>
+			</md-toolbar>
+			<div layout="row" flex ng-repeat="(fieldName, isSubscribed) in valObj.details">
+				<md-switch ng-model="data['subscriptions'][userId]['details'][fieldName]" ng-true-value="1" ng-false-value="0">
+			    	{{fieldName}}
+			  	</md-switch>
+			</div>
+		</div>
+	</div>
+</div>

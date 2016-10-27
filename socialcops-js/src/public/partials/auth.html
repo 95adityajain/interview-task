@@ -1,0 +1,50 @@
+<div ng-cloak>
+	<md-content>
+    	<md-tabs md-dynamic-height md-border-bottom>
+    		<md-tab label="Login" ng-click="resetState ()" ng-disabled="isProcessing ()">
+    			<md-content>
+					<div layout="row">
+						<div flex="30"></div>
+						<div flex="40" layout="column">
+							<md-input-container flex="10">
+					        	<label>Username</label>
+					        	<input ng-model="data.username">
+					      	</md-input-container>
+					      	<md-input-container flex="10">
+					        	<label>Password</label>
+					        	<input ng-model="data.password">
+					      	</md-input-container>
+					      	<md-button md-no-ink class="md-raised md-primary" ng-disabled="isProcessing () || data.username == '' || data.password == ''" ng-click="login ()">
+				        		Submit <md-icon md-font-set="material-icons"> send </md-icon>
+				        	</md-button>
+						</div>
+					</div>
+    			</md-content>
+    		</md-tab>
+    		<md-tab label="Register" ng-click="resetState ()" ng-disabled="isProcessing ()">
+    			<md-content>
+    				<div layout="row">
+						<div flex="30"></div>
+						<div flex="40" layout="column">
+							<md-input-container flex="10">
+					        	<label>Username</label>
+					        	<input ng-model="data.username">
+					      	</md-input-container>
+					      	<md-input-container flex="10">
+					        	<label>Password</label>
+					        	<input ng-model="data.password">
+					      	</md-input-container>
+					      	<md-input-container flex="10">
+					        	<label>Confirm Password</label>
+					        	<input ng-model="data.passwordAgain">
+					      	</md-input-container>
+					      	<md-button md-no-ink class="md-raised md-primary" ng-click="register ()" ng-disabled="isProcessing () || data.username == '' || data.password == '' || data.passwordAgain == '' || data.passwordAgain != data.password">
+				        		Submit <md-icon md-font-set="material-icons"> send </md-icon>
+				        	</md-button>
+						</div>
+					</div>
+    			</md-content>
+    		</md-tab>
+    	</md-tabs>
+	</md-content>
+</div>
