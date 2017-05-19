@@ -1,0 +1,13 @@
+.panel-custom {
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 1px 1px 1px #ddd;
+}
+.panel-custom > .panel-body {
+  padding-bottom: 0px;
+  padding-top: 10px;
+  margin-bottom: -10px;
+}
+.progress-bar-custom > .progress-bar {
+  background-color: #2aabd2;
+}

@@ -1,0 +1,29 @@
+.searchbar-header{
+  font-size:20px;
+  font-family: 'Indie Flower', cursive;
+  background-color:rgba(224,224,224,0.9);
+  padding:15px;
+  padding-left:25;
+  font-weight:bold;
+}
+
+.searchbar-form-container{
+  padding-top:13px;
+  background-color:rgba(224,224,224,0.9);
+}
+
+.searchbar-input{
+  border-radius:0px;
+  color:#01579B;
+  height:45px;
+}
+input.searchbar-input::-webkit-input-placeholder {  
+  color: #9E9E9E !important; 
+  font-weight:bold;
+}  
+.searchbar-select{
+  border-radius:0px;
+  color:#9E9E9E;
+  font-weight:bold;
+  height:45px;
+}
